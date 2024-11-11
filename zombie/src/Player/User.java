@@ -5,6 +5,8 @@ import java.util.Random;
 import main.Unit;
 
 public class User extends Unit{
+	private int setPower;
+	private int armor;
 	private int power;
 	
 	public User(int hp, int mp, int level, int exp, int position) {
@@ -13,8 +15,11 @@ public class User extends Unit{
 	
 	public void attack(Unit monster) {
 		Random ran = new Random();
-		power = ran.nextInt(this.level*2)+1;
+		setPower = ran.nextInt(this.level*2)+1;
 		monster.setHp(monster.getHp() - power);
+		power = setPower - armor;
+		if(power <= 0)
+			power = 1;
 		if(monster.getHp() < 0)
 			monster.setHp(0);
 		
