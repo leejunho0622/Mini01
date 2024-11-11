@@ -23,6 +23,21 @@ public class User extends Unit{
 		if(monster.getHp() < 0)
 			monster.setHp(0);
 		
-		System.out.println("플레이어가 "+power+"만큼 공격!");
+		System.out.println("[플레이어] > "+power+"만큼 공격!");
+	}
+	
+	public void skill(int scroll, Unit monster) {
+		if(scroll == 1 && this.mp > 10) {
+			System.out.println("연속베기!");
+			attack(monster);
+			attack(monster);
+			this.mp -= 10;
+		}else if(scroll == 2 && this.mp > 30) {
+			System.out.println("힐!");
+			this.hp += 100;
+		}else {
+			System.out.println("마나가 없습니다.");
+		}
+			
 	}
 }
