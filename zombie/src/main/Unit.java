@@ -54,8 +54,5 @@ abstract public class Unit {
 	public int getexp() {
 		return this.exp;
 	}
-	
-	public void move() {
-		
-	}
+	abstract void attack(Unit Unit);
 }
