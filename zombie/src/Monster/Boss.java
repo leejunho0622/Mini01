@@ -23,6 +23,6 @@ public class Boss extends Unit{
 		if(player.getHp() < 0)
 			player.setHp(0);
 		
-		System.out.println("보스가 "+power+"만큼 공격!");
+		System.out.println("[보스] > "+power+"만큼 공격!");
 	}
 }

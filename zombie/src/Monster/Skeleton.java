@@ -23,6 +23,6 @@ public class Skeleton extends Unit{
 		if(player.getHp() < 0)
 			player.setHp(0);
 		
-		System.out.println("스켈레톤이 "+power+"만큼 공격!");
+		System.out.println("[스켈레톤] > "+power+"만큼 공격!");
 	}
 }

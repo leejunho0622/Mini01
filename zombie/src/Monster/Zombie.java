@@ -24,6 +24,6 @@ public class Zombie extends Unit {
 		if(player.getHp() < 0)
 			player.setHp(0);
 		
-		System.out.println("좀비가 "+power+"만큼 공격!");
+		System.out.println("[좀비] > "+power+"만큼 공격!");
 	}
 }
