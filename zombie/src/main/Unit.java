@@ -1,7 +1,7 @@
 package main;
 
 abstract public class Unit {
-	private int hp;
+	private double hp;
 	private int mp;
 	private int level;
 	private int exp;
@@ -15,39 +15,43 @@ abstract public class Unit {
 		this.position = position;
 	}
 
-	public void setPos() {
-
+	public void setPos(int position) {
+		this.position = position;
 	}
 
-	public void setHp() {
-
+	public void setHp(double hp) {
+		this.hp = hp;
 	}
 
-	public void setMp() {
-
+	public void setMp(int mp) {
+		this.mp = mp;
 	}
 
 	public void levelUP() {
-
+		this.level++;
 	}
 
-	public void getPos() {
-
+	public int getPos() {
+		return this.position;
 	}
 
-	public void getHp() {
-
+	public double getHp() {
+		return this.hp;
 	}
 
-	public void getMp() {
-
+	public int getMp() {
+		return this.mp;
 	}
 
-	public void getLevel() {
-
+	public int getLevel() {
+		return this.level;
 	}
-
+	
+	public int getexp() {
+		return this.exp;
+	}
+	
 	public void move() {
-
+		
 	}
 }
