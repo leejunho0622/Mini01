@@ -1,11 +1,11 @@
 package main;
 
 abstract public class Unit {
-	private double hp;
-	private int mp;
-	private int level;
-	private int exp;
-	private int position;
+	protected double hp;
+	protected int mp;
+	protected int level;
+	protected int exp;
+	protected int position;
 
 	public Unit(int hp, int mp, int level, int exp, int position) {
 		this.hp = hp;
