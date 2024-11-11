@@ -15,7 +15,7 @@ public class Boss extends Unit{
 	
 	public void attack(Unit player) {
 		Random ran = new Random();
-		power = ran.nextInt(this.level*5)+1;
+		setPower = ran.nextInt(this.level*5)+1;
 		power = setPower - armor;
 		if(power <= 0)
 			power = 1;

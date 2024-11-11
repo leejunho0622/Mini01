@@ -15,7 +15,7 @@ public class Skeleton extends Unit{
 	
 	public void attack(Unit player) {
 		Random ran = new Random();
-		power = ran.nextInt(this.level*3)+1;
+		setPower = ran.nextInt(this.level*3)+1;
 		power = setPower - armor;
 		if(power <= 0)
 			power = 1;
