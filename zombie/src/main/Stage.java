@@ -27,7 +27,7 @@ public class Stage {
 		player = new User(20, 100, 1, 0, 0);
 		zombie = new Zombie(10, 0, 1, 0, 3);
 		skeleton = new Skeleton(5, 0, 1, 0, 5);
-		boss = new Boss(40, 0, 5, 0, stage);
+		boss = new Boss(40, 0, 3, 0, stage);
 	}
 	
 	private void move() {
@@ -36,6 +36,8 @@ public class Stage {
 	
 	private void levelUp() {
 		if(player.getExp() == 10) {
+			player.setHp(player.getHp() + player.getHp()/2);
+			player.setMp(player.getMp() + 30);
 			player.setExp(0);
 			player.levelUP();
 		}
@@ -69,8 +71,8 @@ public class Stage {
 	private boolean battleEnd(Unit monster) {
 		if (monster.getHp() <= 0) {
 			System.out.println("적을 처치했다!");
-			player.setExp(player.getExp() + 2);
-			System.out.println("경험치 2 상승!");
+			player.setExp(player.getExp() + 5);
+			System.out.println("경험치 5 상승!");
 			return true;
 		}
 		if (player.getHp() <= 0) {
@@ -81,7 +83,10 @@ public class Stage {
 	}
 
 	private void play() {
-		if (player.getPos() == zombie.getPos()) {
+		if (player.getPos() == boss.getPos()) {
+			name = boss.setName();
+			battleStart(boss);
+		} else if (player.getPos() == zombie.getPos()) {
 			name = zombie.setName();
 			battleStart(zombie);
 		} else if (player.getPos() == skeleton.getPos()) {
