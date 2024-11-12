@@ -43,7 +43,6 @@ public class Stage {
 	
 	private void battleStart(Unit monster) {
 		System.out.println("야생의 적을 만났다!");
-		
 		while (true) {
 			System.out.printf("[플레이어]\nHP : %.1f | MP : %d\n[%s]\nHP : %.1f\n", player.getHp(), player.getMp(), name,
 					monster.getHp());
@@ -55,7 +54,7 @@ public class Stage {
 				monster.attack(player);
 				System.out.println();
 			} else if (sel == 2) {
-				sel = input("[1] 연속베기(마나 -10) [2] 힐(마나 -30)");
+				sel = input("[1] 연속베기 (마나 -10) [2] 힐 (마나 -30)");
 				if (sel == 1 || sel == 2)
 					player.skill(sel, monster);
 				System.out.println();
@@ -85,9 +84,10 @@ public class Stage {
 		if (player.getPos() == zombie.getPos()) {
 			name = zombie.setName();
 			battleStart(zombie);
-		}else if (player.getPos() == skeleton.getPos())
+		} else if (player.getPos() == skeleton.getPos()) {
 			name = skeleton.setName();
 			battleStart(skeleton);
+		}
 	}
 	
 	private boolean isRun(int select){
