@@ -2,7 +2,7 @@ package main;
 
 import java.util.Random;
 
-abstract public class Monster extends Unit{
+abstract public class Monster extends Unit implements Name{
 	protected Random ran = new Random();
 	protected int monsterPower;
 	protected int armor;
