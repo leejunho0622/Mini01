@@ -1,29 +1,26 @@
 package Player;
 
-import java.util.Random;
-
+import main.Player;
 import main.Unit;
 
-public class User extends Unit{
-	private int setPower;
-	private int armor;
-	private int power;
-	
+public class User extends Player{
 	public User(int hp, int mp, int level, int exp, int position) {
 		super(hp, mp, level, exp, position);
 	}
 	
+	@Override
 	public void attack(Unit monster) {
-		Random ran = new Random();
-		setPower = ran.nextInt(this.level*2)+1;
-		power = setPower - armor;
-		if(power <= 0)
-			power = 1;
-		monster.setHp(monster.getHp() - power);
+		playerPower = ran.nextInt(this.level*2)+1;
+		armor = monster.getLevel()/2;
+		damage = playerPower - armor;
+		
+		if(damage <= 0)
+			damage = 1;
+		monster.setHp(monster.getHp() - damage);
 		if(monster.getHp() < 0)
 			monster.setHp(0);
 		
-		System.out.println("[플레이어] > "+power+"만큼 공격!");
+		System.out.println("[플레이어] > "+damage+"만큼 공격!");
 	}
 	
 	public void skill(int scroll, Unit monster) {
