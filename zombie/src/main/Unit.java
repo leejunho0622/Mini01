@@ -26,11 +26,11 @@ abstract public class Unit {
 	public void setMp(int mp) {
 		this.mp = mp;
 	}
-	
+
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
-	
+
 	public void levelUP() {
 		this.level++;
 	}
@@ -50,10 +50,10 @@ abstract public class Unit {
 	public int getLevel() {
 		return this.level;
 	}
-	
+
 	public int getExp() {
 		return this.exp;
 	}
-	
+
 	public abstract void attack(Unit Unit);
 }

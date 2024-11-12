@@ -10,9 +10,10 @@ public class Stage {
 	private Random ran = new Random();
 	private Scanner scan = new Scanner(System.in);
 
+	private int maxStage;
 	private int stage;
 	private int count;
-	
+
 	private User player;
 	private Zombie zombie;
 	private Skeleton skeleton;
@@ -21,6 +22,7 @@ public class Stage {
 	private String name;
 
 	public Stage(int stage) {
+		this.maxStage = stage;
 		this.stage = stage;
 	}
 
@@ -107,7 +109,7 @@ public class Stage {
 			gameClear();
 		}
 	}
-	
+
 	private void rest() {
 		if (count > 0) {
 			System.out.println("=== 휴식 ===");
@@ -123,10 +125,10 @@ public class Stage {
 			System.out.println("휴식포인트가 부족합니다.");
 		}
 	}
-	
+
 	private void play() {
 		if (player.getPos() == boss.getPos()) {
-			boss = new Boss(50 + stage * player.getLevel(), 0, ran.nextInt(player.getLevel()) + 3, 0, stage);
+			boss = new Boss(50 + maxStage * player.getLevel(), 0, ran.nextInt(player.getLevel()) + 3, 0, stage);
 			name = boss.setName();
 			battleStart(boss);
 		} else if (player.getPos() == zombie.getPos()) {
@@ -177,15 +179,15 @@ public class Stage {
 			System.out.printf("[휴식포인트 : %d]\n", count);
 			int sel = input("[1] 이동 [2] 휴식\n[3] 종료");
 			if (isRun(sel)) {
-				if(sel == 1) {
+				if (sel == 1) {
 					move();
 					play();
-				}else if(sel == 2) {
+					stage--;
+				} else if (sel == 2) {
 					rest();
 				}
 			} else
 				break;
-			stage--;
 		}
 	}
 }
