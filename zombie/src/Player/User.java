@@ -23,7 +23,7 @@ public class User extends Player implements UserStats{
 		if(this.mp >= UserStats.MAX_MP)
 			this.mp = UserStats.MAX_MP;
 		else 
-			this.mp += 10;
+			this.mp += 5;
 		System.out.println("[플레이어] > "+damage+"만큼 공격!");
 	}
 	
@@ -45,7 +45,6 @@ public class User extends Player implements UserStats{
 			if(this.hp >= maxHp)
 				this.hp = maxHp;
 			this.mp -= 30;
-			
 		}else if(scroll == 3 && this.mp >= 100) {
 			System.out.println("필살기!");
 			monster.setHp(monster.getHp() * 0.7);
