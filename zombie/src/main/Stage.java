@@ -49,7 +49,7 @@ public class Stage {
 	private void battleStart(Unit monster) {
 		System.out.println("야생의 적을 만났다!");
 		while (true) {
-			System.out.printf("[플레이어][Lv. %d]\nHP : %.1f | MP : %d\n[%s]\nHP : %.1f\n",player.getLevel(), player.getHp(), player.getMp(), name,
+			System.out.printf("[플레이어][Lv.%d]\n> HP : %.1f | MP : %d\n[%s][Lv.%d]\n> HP : %.1f\n",player.getLevel(), player.getHp(), player.getMp(), name, monster.getLevel(),
 					monster.getHp());
 			System.out.println("======================");
 			int sel = input("[1] 일반공격 [2] 스킬");
@@ -91,9 +91,9 @@ public class Stage {
 		String temp[] = name.split(" ");
 		String enemyType = temp[1];
 		if(enemyType.equals("좀비")) {
-			zombie = new Zombie(20 + zombie.getHp() + 2 * player.getLevel(), 0, player.getLevel(), 0, enemyPos);
+			zombie = new Zombie(20 + zombie.getHp() + 2 * player.getLevel(), 0, ran.nextInt(player.getLevel())+1, 0, enemyPos);
 		}else if(enemyType.equals("스켈레톤")) {
-			skeleton = new Skeleton(10 + skeleton.getHp() + 2 * player.getLevel(), 0, player.getLevel(), 0, enemyPos);
+			skeleton = new Skeleton(10 + skeleton.getHp() + 2 * player.getLevel(), 0, ran.nextInt(player.getLevel())+1, 0, enemyPos);
 		}
 	}
 	
