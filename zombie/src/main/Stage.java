@@ -62,9 +62,9 @@ public class Stage {
 				monster.attack(player);
 				System.out.println();
 			} else if (sel == 2) {
-				sel = input("[1] 연속베기 (마나 -10)\n[2] 힐     (마나 -30)");
+				sel = input("[1] 연속베기 (마나 -10)\n[2] 힐     (마나 -30)\n[3] 필살기  (마나 -100)");
 				System.out.println("======================");
-				if (sel == 1 || sel == 2)
+				if (sel == 1 || sel == 2 || sel == 3)
 					player.skill(sel, monster);
 				if (battleEnd(monster))
 					break;
