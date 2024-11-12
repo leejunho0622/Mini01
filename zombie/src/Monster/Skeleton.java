@@ -10,9 +10,9 @@ public class Skeleton extends Monster{
 	
 	@Override
 	public void attack(Unit player) {
-		MonsterPower = ran.nextInt(this.level*3)+1;
+		monsterPower = ran.nextInt(this.level*3)+1;
 		armor = player.getLevel()/2;
-		damage = MonsterPower - armor;
+		damage = monsterPower - armor;
 		
 		if(damage <= 0)
 			damage = 1;
