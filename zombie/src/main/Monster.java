@@ -8,7 +8,7 @@ abstract public class Monster extends Unit implements Name{
 	protected int armor;
 	protected int damage;
 	
-	protected Monster(int hp, int mp, int level, int exp, int position) {
+	protected Monster(double hp, int mp, int level, int exp, int position) {
 		super(hp, mp, level, exp, position);
 	}
 	

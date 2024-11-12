@@ -7,7 +7,7 @@ abstract public class Unit {
 	protected int exp;
 	protected int position;
 
-	public Unit(int hp, int mp, int level, int exp, int position) {
+	public Unit(double hp, int mp, int level, int exp, int position) {
 		this.hp = hp;
 		this.mp = mp;
 		this.level = level;
@@ -54,5 +54,6 @@ abstract public class Unit {
 	public int getExp() {
 		return this.exp;
 	}
+	
 	public abstract void attack(Unit Unit);
 }

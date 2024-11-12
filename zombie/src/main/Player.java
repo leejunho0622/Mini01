@@ -8,7 +8,7 @@ abstract public class Player extends Unit{
 	protected int armor;
 	protected int damage;
 	
-	protected Player(int hp, int mp, int level, int exp, int position) {
+	protected Player(double hp, int mp, int level, int exp, int position) {
 		super(hp, mp, level, exp, position);
 	}
 	

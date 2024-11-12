@@ -6,7 +6,7 @@ import main.Unit;
 public class Boss extends Monster {
 	public String name;
 
-	public Boss(int hp, int mp, int level, int exp, int position) {
+	public Boss(double hp, int mp, int level, int exp, int position) {
 		super(hp, mp, level, exp, position);
 	}
 

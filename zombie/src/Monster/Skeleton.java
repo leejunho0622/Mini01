@@ -6,7 +6,7 @@ import main.Unit;
 public class Skeleton extends Monster {
 	public String name;
 
-	public Skeleton(int hp, int mp, int level, int exp, int position) {
+	public Skeleton(double hp, int mp, int level, int exp, int position) {
 		super(hp, mp, level, exp, position);
 	}
 

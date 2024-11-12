@@ -6,7 +6,7 @@ import main.Unit;
 public class Zombie extends Monster {
 	public String name;
 
-	public Zombie(int hp, int mp, int level, int exp, int position) {
+	public Zombie(double hp, int mp, int level, int exp, int position) {
 		super(hp, mp, level, exp, position);
 	}
 

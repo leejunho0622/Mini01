@@ -4,7 +4,7 @@ import main.Player;
 import main.Unit;
 
 public class User extends Player{
-	public User(int hp, int mp, int level, int exp, int position) {
+	public User(double hp, int mp, int level, int exp, int position) {
 		super(hp, mp, level, exp, position);
 	}
 	
