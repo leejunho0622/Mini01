@@ -13,6 +13,7 @@ public class Skeleton extends Unit{
 		super(hp, mp, level, exp, position);
 	}
 	
+	@Override
 	public void attack(Unit player) {
 		Random ran = new Random();
 		setPower = ran.nextInt(this.level*3)+1;
