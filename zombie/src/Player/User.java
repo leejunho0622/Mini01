@@ -16,10 +16,10 @@ public class User extends Unit{
 	public void attack(Unit monster) {
 		Random ran = new Random();
 		setPower = ran.nextInt(this.level*2)+1;
-		monster.setHp(monster.getHp() - power);
 		power = setPower - armor;
 		if(power <= 0)
 			power = 1;
+		monster.setHp(monster.getHp() - power);
 		if(monster.getHp() < 0)
 			monster.setHp(0);
 		
