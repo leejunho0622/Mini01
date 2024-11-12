@@ -20,20 +20,27 @@ public class User extends Player{
 		if(monster.getHp() < 0)
 			monster.setHp(0);
 		
-		this.mp += 10;
+		if(this.mp >= 100)
+			this.mp = 100;
+		else 
+			this.mp += 10;
 		System.out.println("[플레이어] > "+damage+"만큼 공격!");
 	}
 	
 	public void skill(int scroll, Unit monster) {
-		if(scroll == 1 && this.mp > 10) {
+		if(scroll == 1 && this.mp >= 10) {
+			this.mp -= 30;
 			System.out.println("연속베기!");
 			attack(monster);
 			attack(monster);
-			this.mp -= 30;
-		}else if(scroll == 2 && this.mp > 30) {
+		}else if(scroll == 2 && this.mp >= 30) {
 			System.out.println("힐!");
-			this.hp += 50;
+			this.hp += 10;
+			int maxHp = 20 + this.level * 10;
+			if(this.hp >= maxHp)
+				this.hp = maxHp;
 			this.mp -= 30;
+			
 		}else {
 			System.out.println("마나가 없습니다.");
 		}
