@@ -57,7 +57,8 @@ public class Stage {
 			System.out.println("======================");
 			if (sel == 1) {
 				player.attack(monster);
-				System.out.println();
+				if (battleEnd(monster))
+					break;
 				monster.attack(player);
 				System.out.println();
 			} else if (sel == 2) {
@@ -65,7 +66,8 @@ public class Stage {
 				System.out.println("======================");
 				if (sel == 1 || sel == 2)
 					player.skill(sel, monster);
-				System.out.println();
+				if (battleEnd(monster))
+					break;
 				monster.attack(player);
 				System.out.println();
 			}
@@ -76,6 +78,7 @@ public class Stage {
 
 	private boolean battleEnd(Unit monster) {
 		if (monster.getHp() <= 0) {
+			System.out.println();
 			System.out.println("적을 처치했다!");
 			player.setExp(player.getExp() + 5);
 			System.out.println("경험치 5 상승!");
@@ -153,7 +156,7 @@ public class Stage {
 		else if (select == 3)
 			return false;
 		else
-			return isRun((input("(재입력) [1] 이동 [2] 종료\n[3] 휴식")));
+			return isRun((input("(재입력)\n[1] 이동 [2] 휴식\n[3] 종료")));
 	}
 
 	private int input(String msg) {
