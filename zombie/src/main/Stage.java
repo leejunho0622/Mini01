@@ -36,6 +36,9 @@ public class Stage {
 
 	private void levelUp() {
 		if (player.getExp() == 10) {
+			System.out.println("=== Level UP  ===");
+			System.out.printf("HP : %.1f -> %.1f\n", player.getHp(), player.getHp() + player.getHp() / 2);
+			System.out.printf("MP : %d -> %d\n", player.getMp(), player.getMp() + 30);
 			player.setHp(player.getHp() + player.getHp() / 2);
 			player.setMp(player.getMp() + 30);
 			player.setExp(0);
@@ -46,7 +49,7 @@ public class Stage {
 	private void battleStart(Unit monster) {
 		System.out.println("야생의 적을 만났다!");
 		while (true) {
-			System.out.printf("[플레이어]\nHP : %.1f | MP : %d\n[%s]\nHP : %.1f\n", player.getHp(), player.getMp(), name,
+			System.out.printf("[플레이어][Lv. %d]\nHP : %.1f | MP : %d\n[%s]\nHP : %.1f\n",player.getLevel(), player.getHp(), player.getMp(), name,
 					monster.getHp());
 			System.out.println("======================");
 			int sel = input("[1] 일반공격 [2] 스킬");
@@ -73,6 +76,7 @@ public class Stage {
 			System.out.println("적을 처치했다!");
 			player.setExp(player.getExp() + 5);
 			System.out.println("경험치 5 상승!");
+			monsterRespawn(monster);
 			return true;
 		}
 		if (player.getHp() <= 0) {
@@ -81,7 +85,18 @@ public class Stage {
 		}
 		return false;
 	}
-
+	
+	private void monsterRespawn(Unit monster) {
+		int enemyPos = monster.getPos() + ran.nextInt(2)+2;
+		String temp[] = name.split(" ");
+		String enemyType = temp[1];
+		if(enemyType.equals("좀비")) {
+			zombie = new Zombie(20 + zombie.getHp() + 2 * player.getLevel(), 0, player.getLevel(), 0, enemyPos);
+		}else if(enemyType.equals("스켈레톤")) {
+			skeleton = new Skeleton(10 + skeleton.getHp() + 2 * player.getLevel(), 0, player.getLevel(), 0, enemyPos);
+		}
+	}
+	
 	private void play() {
 		if (player.getPos() == boss.getPos()) {
 			name = boss.setName();
@@ -98,8 +113,10 @@ public class Stage {
 	private boolean isRun(int select) {
 		if (select == 1)
 			return true;
-		else
+		else if(select == 2)
 			return false;
+		else 
+			return isRun((input("(재입력) [1] 이동 [2] 종료")));
 	}
 
 	private int input(String msg) {
