@@ -51,7 +51,7 @@ abstract public class Unit {
 		return this.level;
 	}
 	
-	public int getexp() {
+	public int getExp() {
 		return this.exp;
 	}
 	public abstract void attack(Unit Unit);

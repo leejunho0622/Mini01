@@ -33,7 +33,7 @@ public class Stage {
 	}
 	
 	private void levelUp() {
-		if(player.getexp() == 10) {
+		if(player.getExp() == 10) {
 			player.setExp(0);
 			player.levelUP();
 		}
@@ -67,7 +67,7 @@ public class Stage {
 	private boolean battleEnd(Unit monster) {
 		if (monster.getHp() <= 0) {
 			System.out.println("적을 처치했다!");
-			player.setExp(player.getexp() + 2);
+			player.setExp(player.getExp() + 2);
 			System.out.println("경험치 2 상승!");
 			return true;
 		}
