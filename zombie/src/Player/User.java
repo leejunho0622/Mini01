@@ -29,7 +29,7 @@ public class User extends Player{
 			System.out.println("연속베기!");
 			attack(monster);
 			attack(monster);
-			this.mp -= 10;
+			this.mp -= 30;
 		}else if(scroll == 2 && this.mp > 30) {
 			System.out.println("힐!");
 			this.hp += 100;
