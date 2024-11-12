@@ -32,7 +32,7 @@ public class User extends Player{
 			this.mp -= 30;
 		}else if(scroll == 2 && this.mp > 30) {
 			System.out.println("힐!");
-			this.hp += 100;
+			this.hp += 50;
 			this.mp -= 30;
 		}else {
 			System.out.println("마나가 없습니다.");
