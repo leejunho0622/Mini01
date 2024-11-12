@@ -27,7 +27,7 @@ public class Boss extends Monster {
 
 	@Override
 	public String setName() {
-		name = Skeleton.prefix[ran.nextInt(prefix.length)] + " 보스";
+		name = Boss.prefix[ran.nextInt(prefix.length)] + " 보스";
 		return name;
 	}
 }
