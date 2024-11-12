@@ -11,7 +11,8 @@ public class Stage {
 	private Scanner scan = new Scanner(System.in);
 
 	private int stage;
-
+	private int count;
+	
 	private User player;
 	private Zombie zombie;
 	private Skeleton skeleton;
@@ -60,7 +61,7 @@ public class Stage {
 				monster.attack(player);
 				System.out.println();
 			} else if (sel == 2) {
-				sel = input("[1] 연속베기 (마나 -10) [2] 힐 (마나 -30)");
+				sel = input("[1] 연속베기 (마나 -10)\n[2] 힐     (마나 -30)");
 				System.out.println("======================");
 				if (sel == 1 || sel == 2)
 					player.skill(sel, monster);
@@ -80,6 +81,7 @@ public class Stage {
 			System.out.println("경험치 5 상승!");
 			System.out.println("======================");
 			monsterRespawn(monster);
+			count++;
 			return true;
 		}
 		if (player.getHp() <= 0) {
@@ -102,7 +104,23 @@ public class Stage {
 			gameClear();
 		}
 	}
-
+	
+	private void rest() {
+		if (count > 0) {
+			System.out.println("=== 휴식 ===");
+			System.out.println("HP : +20");
+			System.out.println("MP : +10");
+			System.out.println("===========");
+			double hp = player.getHp() + 20 > player.getMaxHp() ? player.getMaxHp() : player.getHp() + 20;
+			int mp = player.getMp() + 10 > player.MAX_MP ? player.MAX_MP : player.getMp() + 10;
+			player.setHp(hp);
+			player.setMp(mp);
+			count--;
+		} else {
+			System.out.println("휴식포인트가 부족합니다.");
+		}
+	}
+	
 	private void play() {
 		if (player.getPos() == boss.getPos()) {
 			boss = new Boss(50 + stage * player.getLevel(), 0, ran.nextInt(player.getLevel()) + 3, 0, stage);
@@ -130,12 +148,12 @@ public class Stage {
 	}
 
 	private boolean isRun(int select) {
-		if (select == 1)
+		if (select == 1 || select == 2)
 			return true;
-		else if (select == 2)
+		else if (select == 3)
 			return false;
 		else
-			return isRun((input("(재입력) [1] 이동 [2] 종료")));
+			return isRun((input("(재입력) [1] 이동 [2] 종료\n[3] 휴식")));
 	}
 
 	private int input(String msg) {
@@ -153,9 +171,15 @@ public class Stage {
 		defaultEntity();
 		while (stage > 0) {
 			levelUp();
-			if (isRun(input("[1] 이동 [2] 종료"))) {
-				move();
-				play();
+			System.out.printf("[휴식포인트 : %d]\n", count);
+			int sel = input("[1] 이동 [2] 휴식\n[3] 종료");
+			if (isRun(sel)) {
+				if(sel == 1) {
+					move();
+					play();
+				}else if(sel == 2) {
+					rest();
+				}
 			} else
 				break;
 			stage--;
