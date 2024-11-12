@@ -46,6 +46,13 @@ public class User extends Player implements UserStats{
 				this.hp = maxHp;
 			this.mp -= 30;
 			
+		}else if(scroll == 3 && this.mp >= 100) {
+			System.out.println("필살기!");
+			monster.setHp(monster.getHp() * 0.7);
+			int count = ran.nextInt(this.level*10)+1;
+			for(int i=0; i<count; i++)
+				attack(monster);
+			this.mp -= 100;
 		}else {
 			System.out.println("마나가 없습니다.");
 		}
