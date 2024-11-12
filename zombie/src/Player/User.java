@@ -20,6 +20,7 @@ public class User extends Player{
 		if(monster.getHp() < 0)
 			monster.setHp(0);
 		
+		this.mp += 10;
 		System.out.println("[플레이어] > "+damage+"만큼 공격!");
 	}
 	
@@ -32,6 +33,7 @@ public class User extends Player{
 		}else if(scroll == 2 && this.mp > 30) {
 			System.out.println("힐!");
 			this.hp += 100;
+			this.mp -= 30;
 		}else {
 			System.out.println("마나가 없습니다.");
 		}
