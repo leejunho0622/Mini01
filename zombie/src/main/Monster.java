@@ -3,7 +3,7 @@ package main;
 import java.util.Random;
 
 abstract public class Monster extends Unit{
-	protected Random ran;
+	protected Random ran = new Random();
 	protected int MonsterPower;
 	protected int armor;
 	protected int damage;
