@@ -25,4 +25,4 @@
 ## 2. 게임 실행 화면 (Demo)
 ![Demo](https://github.com/leejunho0622/Mini01/blob/main/ZombieGameDemo.gif)
 ## 3. Zombie Game UML Diagram
-![UML Diagram](https://github.com/leejunho0622/Mini01/blob/main/ZombieUML..png)
+![UML Diagram](https://github.com/leejunho0622/Zombie/blob/main/ZombieUML.png)
