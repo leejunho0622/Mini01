@@ -27,7 +27,7 @@ public class Stage {
 		player = new User(20, 100, 1, 0, 0);
 		zombie = new Zombie(10, 0, 1, 0, 3);
 		skeleton = new Skeleton(5, 0, 1, 0, 5);
-		boss = new Boss(40, 0, 3, 0, stage);
+		boss = new Boss(0, 0, 0, 0, stage);
 	}
 
 	private void move() {
@@ -53,6 +53,7 @@ public class Stage {
 					monster.getHp());
 			System.out.println("======================");
 			int sel = input("[1] 일반공격 [2] 스킬");
+			System.out.println("======================");
 			if (sel == 1) {
 				player.attack(monster);
 				System.out.println();
@@ -60,6 +61,7 @@ public class Stage {
 				System.out.println();
 			} else if (sel == 2) {
 				sel = input("[1] 연속베기 (마나 -10) [2] 힐 (마나 -30)");
+				System.out.println("======================");
 				if (sel == 1 || sel == 2)
 					player.skill(sel, monster);
 				System.out.println();
@@ -76,11 +78,13 @@ public class Stage {
 			System.out.println("적을 처치했다!");
 			player.setExp(player.getExp() + 5);
 			System.out.println("경험치 5 상승!");
+			System.out.println("======================");
 			monsterRespawn(monster);
 			return true;
 		}
 		if (player.getHp() <= 0) {
 			System.out.println("플레이어는 죽었다-");
+			badEnding();
 			return true;
 		}
 		return false;
@@ -94,11 +98,14 @@ public class Stage {
 			zombie = new Zombie(20 + 2 * player.getLevel(), 0, ran.nextInt(player.getLevel())+1, 0, enemyPos);
 		}else if(enemyType.equals("스켈레톤")) {
 			skeleton = new Skeleton(10 + 2 * player.getLevel(), 0, ran.nextInt(player.getLevel())+1, 0, enemyPos);
+		}else if(enemyType.equals("보스")) {
+			gameClear();
 		}
 	}
 	
 	private void play() {
 		if (player.getPos() == boss.getPos()) {
+			boss = new Boss(50 + stage * player.getLevel(), 0, ran.nextInt(player.getLevel())+3, 0, stage);
 			name = boss.setName();
 			battleStart(boss);
 		} else if (player.getPos() == zombie.getPos()) {
@@ -109,7 +116,19 @@ public class Stage {
 			battleStart(skeleton);
 		}
 	}
-
+	
+	private void gameClear() {
+		System.out.println("=== Congratulation ===");
+		System.out.println("   !! Game Clear !!");
+		System.out.println("======================");
+	}
+	
+	private void badEnding() {
+		System.out.println("==== You are Dead ====");
+		System.out.println("!! replay this gmae !!");
+		System.out.println("======================");
+	}
+	
 	private boolean isRun(int select) {
 		if (select == 1)
 			return true;
@@ -120,7 +139,7 @@ public class Stage {
 	}
 
 	private int input(String msg) {
-		System.out.println(msg + "\n");
+		System.out.print(msg + "\n");
 		String input = scan.nextLine();
 		int sel = 0;
 		try {
