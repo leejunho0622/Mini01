@@ -49,8 +49,8 @@ public class Stage {
 	private void battleStart(Unit monster) {
 		System.out.println("야생의 적을 만났다!");
 		while (true) {
-			System.out.printf("[플레이어][Lv.%d]\n> HP : %.1f | MP : %d\n[%s][Lv.%d]\n> HP : %.1f\n",player.getLevel(), player.getHp(), player.getMp(), name, monster.getLevel(),
-					monster.getHp());
+			System.out.printf("[플레이어][Lv.%d]\n> HP : %.1f | MP : %d\n[%s][Lv.%d]\n> HP : %.1f\n", player.getLevel(),
+					player.getHp(), player.getMp(), name, monster.getLevel(), monster.getHp());
 			System.out.println("======================");
 			int sel = input("[1] 일반공격 [2] 스킬");
 			System.out.println("======================");
@@ -89,23 +89,23 @@ public class Stage {
 		}
 		return false;
 	}
-	
+
 	private void monsterRespawn(Unit monster) {
-		int enemyPos = monster.getPos() + ran.nextInt(2)+2;
+		int enemyPos = monster.getPos() + ran.nextInt(2) + 2;
 		String temp[] = name.split(" ");
 		String enemyType = temp[1];
-		if(enemyType.equals("좀비")) {
-			zombie = new Zombie(20 + 2 * player.getLevel(), 0, ran.nextInt(player.getLevel())+1, 0, enemyPos);
-		}else if(enemyType.equals("스켈레톤")) {
-			skeleton = new Skeleton(10 + 2 * player.getLevel(), 0, ran.nextInt(player.getLevel())+1, 0, enemyPos);
-		}else if(enemyType.equals("보스")) {
+		if (enemyType.equals("좀비")) {
+			zombie = new Zombie(20 + 2 * player.getLevel(), 0, ran.nextInt(player.getLevel()) + 1, 0, enemyPos);
+		} else if (enemyType.equals("스켈레톤")) {
+			skeleton = new Skeleton(10 + 2 * player.getLevel(), 0, ran.nextInt(player.getLevel()) + 1, 0, enemyPos);
+		} else if (enemyType.equals("보스")) {
 			gameClear();
 		}
 	}
-	
+
 	private void play() {
 		if (player.getPos() == boss.getPos()) {
-			boss = new Boss(50 + stage * player.getLevel(), 0, ran.nextInt(player.getLevel())+3, 0, stage);
+			boss = new Boss(50 + stage * player.getLevel(), 0, ran.nextInt(player.getLevel()) + 3, 0, stage);
 			name = boss.setName();
 			battleStart(boss);
 		} else if (player.getPos() == zombie.getPos()) {
@@ -116,25 +116,25 @@ public class Stage {
 			battleStart(skeleton);
 		}
 	}
-	
+
 	private void gameClear() {
 		System.out.println("=== Congratulation ===");
 		System.out.println("   !! Game Clear !!");
 		System.out.println("======================");
 	}
-	
+
 	private void badEnding() {
 		System.out.println("==== You are Dead ====");
 		System.out.println("!! replay this gmae !!");
 		System.out.println("======================");
 	}
-	
+
 	private boolean isRun(int select) {
 		if (select == 1)
 			return true;
-		else if(select == 2)
+		else if (select == 2)
 			return false;
-		else 
+		else
 			return isRun((input("(재입력) [1] 이동 [2] 종료")));
 	}
 
