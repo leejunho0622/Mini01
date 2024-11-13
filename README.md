@@ -23,6 +23,6 @@
   * 일반공격시 **마나 10**이 **회복**한다.
 
 ## 2. 게임 실행 화면 (Demo)
-![Demo](https://github.com/leejunho0622/Mini01/blob/main/ZombieGameDemo.gif)
+![Demo](https://github.com/leejunho0622/Zombie/blob/main/resources/ZombieGameDemo.gif)
 ## 3. Zombie Game UML Diagram
-![UML Diagram](https://github.com/leejunho0622/Zombie/blob/main/ZombieUML.png)
+![UML Diagram](https://github.com/leejunho0622/Zombie/blob/main/resources/ZombieUML..png)
